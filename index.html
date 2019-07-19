@@ -4,13 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HBS</title>
+    <title>Best Food App</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="root"></div>
 
     <script id="entry-template" type="text/x-handlebars-template">
-        <h1>{{name}}</h1>
+        <div class="food-app">
+            <span>Best Food App</span>
+        </div>
+        <h4>FAVOURITES</h4>
+        <h6>Enjoy what you have been ordering</h6>
+        <section class="favourites">
+            {{#recipes}}
+                {{#if isFavourite}}
+                    <a href="#" class="l-fav-item">
+                        <img src="{{image}}" class="l-fav-img" alt="{{name}}">
+                        <p class="l-fav-name">{{name}}</p>
+                        <p class="l-fav-price">{{price}}</p>
+                        <button class="l-reorder-button">REORDER</button>
+                    </a>
+                {{/if}}
+            {{/recipes}}
+        </section>
+        <hr>
+        <form class="search-dish" action="#">
+            <input type="text" placeholder="Search for a particular dish" class="search-dish-input">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <h4>SELECT CATEGORIES</h4>
+        <section class="menu">
+            {{#categories}}
+                <a href="#" class="l-category-tab">
+                    <img src="{{image}}" class="l-category-img" alt="{{name}}">
+                    <span class="l-category-name">{{name}}</span>
+                </a>
+            {{/categories}}
+        </section>
+        <section class="dishes">
+            {{#recipes}}
+                <a href="#" class="l-dish">
+                    <img src="{{image}}" class="l-dish-img" alt="{{name}}">
+                    <span class="l-dish-name">{{name}}</span>
+                    <p class="l-fav-price">{{price}}</p>
+                    <button class="l-reorder-button">ADD TO BAG</button>
+                </a>
+            {{/recipes}}
+        </section>
     </script>
 
     <script src="js/jquery-3.4.1.min.js"></script>
